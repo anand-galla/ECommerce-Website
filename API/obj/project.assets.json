@@ -430,6 +430,32 @@
         "runtime": {
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
+      },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "3.1.9",
+          "Microsoft.EntityFrameworkCore.Design": "3.1.9",
+          "Microsoft.EntityFrameworkCore.Sqlite": "3.1.9"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -1141,13 +1167,23 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.EntityFrameworkCore >= 3.1.9",
-      "Microsoft.EntityFrameworkCore.Design >= 3.1.9",
-      "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.9"
+      "Core >= 1.0.0",
+      "Infrastructure >= 1.0.0",
+      "Microsoft.EntityFrameworkCore.Design >= 3.1.9"
     ]
   },
   "packageFolders": {
@@ -1156,11 +1192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Learnings\\Demo\\skinet\\API\\API.csproj",
+      "projectUniqueName": "D:\\Learnings\\Demo\\skinet\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "d:\\Learnings\\Demo\\skinet\\API\\API.csproj",
+      "projectPath": "D:\\Learnings\\Demo\\skinet\\API\\API.csproj",
       "packagesPath": "C:\\Users\\agalla\\.nuget\\packages\\",
-      "outputPath": "d:\\Learnings\\Demo\\skinet\\API\\obj\\",
+      "outputPath": "D:\\Learnings\\Demo\\skinet\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\agalla\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1175,7 +1211,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Learnings\\Demo\\skinet\\Core\\Core.csproj": {
+              "projectPath": "D:\\Learnings\\Demo\\skinet\\Core\\Core.csproj"
+            },
+            "D:\\Learnings\\Demo\\skinet\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\Learnings\\Demo\\skinet\\Infrastructure\\Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1187,15 +1230,7 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[3.1.9, )"
-          },
           "Microsoft.EntityFrameworkCore.Design": {
-            "target": "Package",
-            "version": "[3.1.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[3.1.9, )"
           }
